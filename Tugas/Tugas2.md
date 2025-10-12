@@ -10,7 +10,7 @@
 ![Tampilan Endpoint Update Book](SS/SS3.png)
 
 ## 4. Tampilan Endpoint Delete Book
-![Tampilan Endpoint Delete Book](SS/SS.png)
+![Tampilan Endpoint Delete Book](SS/SS4.png)
 
 ## Tampilan Middleware pada terminal
 ![Tampilan Middleware pada terminal](SS/SS-MW.png) 
