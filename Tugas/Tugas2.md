@@ -1,16 +1,16 @@
 # Tugas 2
 
 ## 1. Tampilan Endpoint Create Book
-![Tampilan Endpoint Create Book](Tugas/SS1.png)
+![Tampilan Endpoint Create Book](SS/SS1.png)
 
 ## 2. Tampilan Endpoint Read Book
-![Tampilan Endpoint Read Book](Tugas/SS2.png)
+![Tampilan Endpoint Read Book](SS/SS2.png)
 
 ## 3. Tampilan Endpoint Update Book
-![Tampilan Endpoint Update Book](Tugas/SS3.png)
+![Tampilan Endpoint Update Book](SS/SS3.png)
 
 ## 4. Tampilan Endpoint Delete Book
-![Tampilan Endpoint Delete Book](Tugas/SS4.png)
+![Tampilan Endpoint Delete Book](SS/SS4.png)
 
 ## Tampilan Middleware pada terminal
-![Tampilan Middleware pada terminal](Tugas/SS-MW.png) 
+![Tampilan Middleware pada terminal](SS/SS-MW.png) 
