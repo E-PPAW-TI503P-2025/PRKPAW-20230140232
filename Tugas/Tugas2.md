@@ -14,4 +14,7 @@
 
 ## Tampilan Middleware pada terminal
 ![Tampilan Middleware pada terminal](SS/SS-MW.png) 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9bcdc0c889c5e9a0b92395e1a61b274e3f3b6598
