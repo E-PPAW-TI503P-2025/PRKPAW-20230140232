@@ -3,7 +3,7 @@ exports.addUserData = (req, res, next) => { // Middleware untuk menambahkan data
     req.user = { // Menambahkan properti user ke objek req
         id: 123, // ID unik untuk user
         nama: 'User Karyawan', // Nama user
-        role: 'karyawan' // role bisa 'karyawan' atau 'admin'
+        role: 'admin' // role bisa 'karyawan' atau 'admin'
     };
     next(); // Lanjut ke middleware atau route handler berikutnya
 };
