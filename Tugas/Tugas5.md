@@ -11,7 +11,7 @@ Berikut hasil pengujian endpoint menggunakan Postman, disertai gambar `img1.png`
 **Deskripsi:** Memperbarui data presensi (checkIn, checkOut, atau nama).  
 
 📸 **Screenshot:**  
-![Update Data Presensi](Tugas5-ss/img1.png)
+![Update Data Presensi](Tugas5-SS/img1.png)
 
 ---
 
@@ -21,7 +21,7 @@ Berikut hasil pengujian endpoint menggunakan Postman, disertai gambar `img1.png`
 **Deskripsi:** Menampilkan pesan error jika input `checkIn` atau `checkOut` tidak sesuai format tanggal ISO8601.  
 
 📸 **Screenshot:**  
-![Update Format Tanggal Tidak Valid](Tugas5-ss/img2.png)
+![Update Format Tanggal Tidak Valid](Tugas5-SS/img2.png)
 
 ---
 
@@ -31,7 +31,7 @@ Berikut hasil pengujian endpoint menggunakan Postman, disertai gambar `img1.png`
 **Deskripsi:** Menghapus data presensi berdasarkan `id`.  
 
 📸 **Screenshot:**  
-![Delete Data Presensi](Tugas5-ss/img3.png)
+![Delete Data Presensi](Tugas5-SS/img3.png)
 
 ---
 
@@ -41,7 +41,7 @@ Berikut hasil pengujian endpoint menggunakan Postman, disertai gambar `img1.png`
 **Deskripsi:** Menampilkan daftar presensi berdasarkan nama tertentu.  
 
 📸 **Screenshot:**  
-![Search Berdasarkan Nama](Tugas5-ss/img4.png)
+![Search Berdasarkan Nama](Tugas5-SS/img4.png)
 
 ---
 
@@ -51,7 +51,7 @@ Berikut hasil pengujian endpoint menggunakan Postman, disertai gambar `img1.png`
 **Deskripsi:** Menampilkan daftar presensi berdasarkan tanggal tertentu.  
 
 📸 **Screenshot:**  
-![Search Berdasarkan Tanggal](Tugas5-ss/img5.png)
+![Search Berdasarkan Tanggal](Tugas5-SS/img5.png)
 
 ---
 
