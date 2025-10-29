@@ -1,6 +1,7 @@
 // 1. Ganti sumber data dari array ke model Sequelize
 const { Presensi } = require("../models");
 const { format } = require("date-fns-tz");
+const { validationResult } = require("express-validator"); // ← pindah ke sini
 const timeZone = "Asia/Jakarta";
 
 exports.CheckIn = async (req, res) => {
@@ -89,6 +90,110 @@ exports.CheckOut = async (req, res) => {
         { timeZone }
       )} WIB`,
       data: formattedData,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Terjadi kesalahan pada server",
+      error: error.message,
+    });
+  }
+};
+
+exports.deletePresensi = async (req, res) => {
+  try {
+    const { id: userId } = req.user;
+    const presensiId = req.params.id;
+    const recordToDelete = await Presensi.findByPk(presensiId);
+
+    if (!recordToDelete) {
+      return res
+        .status(404)
+        .json({ message: "Catatan presensi tidak ditemukan." });
+    }
+    if (recordToDelete.userId !== userId) {
+      return res
+        .status(403)
+        .json({ message: "Akses ditolak: Anda bukan pemilik catatan ini." });
+    }
+    await recordToDelete.destroy();
+    res.status(204).send();
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Terjadi kesalahan pada server", error: error.message });
+  }
+};
+
+exports.updatePresensi = async (req, res) => {
+  try {
+    // 🔹 Tambahkan validasi hasil express-validator
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ 
+        message: "Input tidak valid.",
+        errors: errors.array()
+      });
+    }
+
+    const presensiId = req.params.id;
+    const { checkIn, checkOut, nama } = req.body;
+
+    if (checkIn === undefined && checkOut === undefined && nama === undefined) {
+      return res.status(400).json({
+        message:
+          "Request body tidak berisi data yang valid untuk diupdate (checkIn, checkOut, atau nama).",
+      });
+    }
+
+    const recordToUpdate = await Presensi.findByPk(presensiId);
+    if (!recordToUpdate) {
+      return res
+        .status(404)
+        .json({ message: "Catatan presensi tidak ditemukan." });
+    }
+
+    recordToUpdate.checkIn = checkIn || recordToUpdate.checkIn;
+    recordToUpdate.checkOut = checkOut || recordToUpdate.checkOut;
+    recordToUpdate.nama = nama || recordToUpdate.nama;
+    await recordToUpdate.save();
+
+    res.json({
+      message: "Data presensi berhasil diperbarui.",
+      data: recordToUpdate,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Terjadi kesalahan pada server", error: error.message });
+  }
+};
+
+exports.searchByTanggal = async (req, res) => {
+  try {
+    const { tanggal } = req.query; // Contoh: ?tanggal=2025-10-29
+
+    if (!tanggal) {
+      return res.status(400).json({ message: "Parameter 'tanggal' wajib diisi (format: YYYY-MM-DD)." });
+    }
+
+    const hasil = await Presensi.findAll({
+      where: {
+        checkIn: {
+          [require("sequelize").Op.between]: [
+            new Date(`${tanggal}T00:00:00`),
+            new Date(`${tanggal}T23:59:59`),
+          ],
+        },
+      },
+    });
+
+    if (hasil.length === 0) {
+      return res.status(404).json({ message: "Tidak ada presensi pada tanggal tersebut." });
+    }
+
+    res.json({
+      message: `Data presensi untuk tanggal ${tanggal}`,
+      data: hasil,
     });
   } catch (error) {
     res.status(500).json({
