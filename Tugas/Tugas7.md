@@ -1,4 +1,4 @@
-# 📘 Tugas 6
+# 📘 Tugas 7
 ---
 
 ## 1 Register 
