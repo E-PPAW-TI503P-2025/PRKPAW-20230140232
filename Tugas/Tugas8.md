@@ -7,7 +7,7 @@
 
 ## 2 Check-Out
 📸 **Screenshot:**  
-![Checkout ](Tugas8checkout.png)
+![Checkout ](Tugas8/checkout.png)
 
 ## 3 Report
 📸 **Screenshot:**  
