@@ -7,14 +7,14 @@
 
 ## 2 Check-Out
 📸 **Screenshot:**  
-![Checkout ](Tugas8-SS/checkout.png)
+![Checkout ](Tugas8checkout.png)
 
 ## 3 Report
 📸 **Screenshot:**  
-![Update Format Tanggal Tidak Valid](Tugas8-SS/report.png)
+![Update Format Tanggal Tidak Valid](Tugas8/report.png)
 
 ## 4 Table Presensi Database
 📸 **Screenshot:**  
-![Update Format Tanggal Tidak Valid](Tugas8-SS/presensidb.png)
+![Update Format Tanggal Tidak Valid](Tugas8/presensidb.png)
 
 
