@@ -1,5 +1,6 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Presensis', {
@@ -9,32 +10,41 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+
+      // Foreign Key ke tabel Users
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Users',   // Nama tabel target
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
-      nama: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
+
       checkIn: {
         allowNull: false,
         type: Sequelize.DATE
       },
+
       checkOut: {
-        allowNull: true, // checkOut bisa kosong saat pertama kali check-in
+        allowNull: true,
         type: Sequelize.DATE
       },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
+
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
+
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Presensis');
   }

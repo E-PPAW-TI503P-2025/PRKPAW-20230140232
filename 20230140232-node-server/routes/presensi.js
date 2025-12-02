@@ -1,21 +1,21 @@
 const express = require('express');
 const { body } = require('express-validator');
 const router = express.Router();
-const presensiController = require('../controllers/presensiController');
-const { addUserData } = require('../middleware/permissionMiddleware');
 
-router.use(addUserData);
+const presensiController = require('../controllers/presensiController');
+const { verifyToken } = require('../middleware/authMiddleware'); // <-- pakai JWT, bukan dummy!
 
 // Endpoint check-in dan check-out
-router.post('/check-in', presensiController.CheckIn);
-router.post('/check-out', presensiController.CheckOut);
+router.post('/check-in', verifyToken, presensiController.CheckIn);
+router.post('/check-out', verifyToken, presensiController.CheckOut);
 
 // Endpoint hapus data presensi
-router.delete('/:id', presensiController.deletePresensi);
+router.delete('/:id', verifyToken, presensiController.deletePresensi);
 
-// Endpoint update dengan validasi format tanggal (express-validator)
+// Endpoint update dengan validasi format tanggal
 router.put(
   '/:id',
+  verifyToken,
   [
     body('checkIn')
       .optional()
@@ -29,7 +29,7 @@ router.put(
   presensiController.updatePresensi
 );
 
-// ✅ Tambahkan endpoint search berdasarkan tanggal
-router.get('/search', presensiController.searchByTanggal);
+// Search
+router.get('/search', verifyToken, presensiController.searchByTanggal);
 
 module.exports = router;
