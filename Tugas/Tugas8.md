@@ -3,7 +3,7 @@
 
 ## 1 Check-In
 📸 **Screenshot:**  
-![Checkin](Tugas8-SS/checkin.png)
+![Checkin](Tugas8/checkin.png)
 
 ## 2 Check-Out
 📸 **Screenshot:**  
